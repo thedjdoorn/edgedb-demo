@@ -1,0 +1,17 @@
+@page
+@model EdgeDB_Demo.Pages.Companies
+
+@{
+    ViewData["Title"] = "Companies List";
+}
+
+<!DOCTYPE html>
+
+<div>
+    <ul>
+        @foreach (var item in Model.companies)
+        {
+            <li><a href="/company/@item.id.ToString()">@item.name</a></li>
+        }
+    </ul>
+</div>

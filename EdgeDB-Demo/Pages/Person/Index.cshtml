@@ -1,0 +1,37 @@
+@page "{id?}"
+@using EdgeDB.DataTypes
+@model EdgeDB_Demo.Pages.Person.Index
+
+@{
+    ViewData["Title"] = @Model.Person.name;
+}
+
+<h1>@Model.Person.name</h1>
+<h2>Companies</h2>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    @foreach (var company in @Model.Person.Companies)
+    {
+        <tr>
+            <td>@company.id</td>
+            <td><a href="/company/@company.id">@company.name</a></td>
+            <td>@company.employment_start.DateOnly.ToShortDateString()</td>
+            @if (@company.employment_end != new LocalDate())
+            {
+                <td>@company.employment_end.DateOnly.ToShortDateString()</td>
+            }
+        </tr>
+    }
+</table>
+@* <h2>Interests</h2> *@
+@* <ul> *@
+@*     @foreach (var interest in @Model.Person.Interests) *@
+@*     { *@
+@*         <li><a href="/interests/@interest.id">@interest.name</a></li> *@
+@*     } *@
+@* </ul> *@

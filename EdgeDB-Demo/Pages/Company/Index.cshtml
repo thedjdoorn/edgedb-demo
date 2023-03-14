@@ -1,0 +1,34 @@
+@page "{id?}"
+@using EdgeDB.DataTypes
+@model EdgeDB_Demo.Pages.CompanyPageModel
+
+@{
+    ViewData["Title"] = Model.Company.name;
+}
+
+
+<!DOCTYPE html>
+
+<div>
+    <h1>@Model.Company.name</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        @foreach (var employee in @Model.Company.employees)
+        {
+            <tr>
+                <td>@employee.id</td>
+                <td><a href="/person/@employee.id">@employee.name</a></td>
+                <td>@employee.employment_start.DateOnly.ToShortDateString()</td>
+                @if (@employee.employment_end != null)
+                {
+                    <td>@employee.employment_end?.DateOnly.ToShortDateString()</td>
+                }
+            </tr>
+        }
+    </table>
+</div>
