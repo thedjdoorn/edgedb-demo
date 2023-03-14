@@ -24,9 +24,9 @@
                 <td>@employee.id</td>
                 <td><a href="/person/@employee.id">@employee.name</a></td>
                 <td>@employee.employment_start.DateOnly.ToShortDateString()</td>
-                @if (@employee.employment_end != null)
+                @if (@employee.employment_end != new LocalDate())
                 {
-                    <td>@employee.employment_end?.DateOnly.ToShortDateString()</td>
+                    <td>@employee.employment_end.DateOnly.ToShortDateString()</td>
                 }
             </tr>
         }

@@ -3,18 +3,20 @@ using EdgeDB.DataTypes;
 
 namespace EdgeDB_Demo.Models;
 
-[EdgeDBType]
+[EdgeDBType("Company")]
 public class Company
 {
-    // [EdgeDBDeserializer]
-    // public Company(IDictionary<string, object> data)
-    // {
-    //     id = (Guid)data["id"]!;
-    //     name = (string)data["name"]!;
-    // }
+    [EdgeDBDeserializer]
+    public Company(IDictionary<string, object> data)
+    {
+        id = (Guid)data["id"]!;
+        name = (string)data["name"]!;
+        address = (string) data["address"];
+    }
     
     public Guid id { get; set; }
     public string name { get;set; }
+    public string address { get; set; }
 
     // [EdgeDBProperty("@employment_start")]
     public LocalDate employment_start { get; set; }

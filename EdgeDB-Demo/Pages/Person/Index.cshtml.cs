@@ -17,6 +17,6 @@ public class Index : PageModel
     public async Task OnGet(string id)
     {
         Id = id;
-        Person = await _client.QuerySingleAsync<Models.Person>(@"select Person {name, Companies:{id, name, @employment_start, @employment_end}, Interests:{id,name}} filter .id = <uuid>'"+Id+"'");
+        Person = await _client.QuerySingleAsync<Models.Person>(@"select Person {name, Companies:{id, name, address, @employment_start, @employment_end}, Interests:{id,name}} filter .id = <uuid>'"+Id+"'");
     }
 }

@@ -28,10 +28,10 @@
         </tr>
     }
 </table>
-@* <h2>Interests</h2> *@
-@* <ul> *@
-@*     @foreach (var interest in @Model.Person.Interests) *@
-@*     { *@
-@*         <li><a href="/interests/@interest.id">@interest.name</a></li> *@
-@*     } *@
-@* </ul> *@
+<h2>Interests</h2>
+<ul>
+    @foreach (var interest in @Model.Person.Interests)
+    {
+        <li><a href="/interests/@interest.id">@interest.name</a></li>
+    }
+</ul>

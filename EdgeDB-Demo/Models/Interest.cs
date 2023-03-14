@@ -1,8 +1,7 @@
 using EdgeDB;
 
 namespace EdgeDB_Demo.Models;
-
-[EdgeDBType]
+[EdgeDBType("Interest")]
 public class Interest
 {
     [EdgeDBDeserializer]

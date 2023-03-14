@@ -18,14 +18,12 @@ public class Person
         }
         Companies = ((System.Object[])data["Companies"]).OfType<Company>().ToArray();
         Interests = ((System.Object[])data["Interests"]).OfType<Interest>().ToArray();
-        // Companies = ((IDictionary<string, object>[])data["Companies"]).Select(it =>  new Company(it)).ToArray();
-        // Interests = ((IDictionary<string, object>[])data["Interests"]).Select(it =>  new Interest(it)).ToArray();
     }
     public Guid id { get; set; }
     public string name { get; set; }
 
     public LocalDate employment_start { get; set; }
-    public LocalDate? employment_end { get; set; }
+    public LocalDate employment_end { get; set; }
     
     [EdgeDBProperty("Companies")]
     public Company[] Companies { get; set; }
